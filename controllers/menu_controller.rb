@@ -44,7 +44,7 @@ class MenuController
                 main_menu
         end
     end
-#Menu options methods
+#Menu's option's methods
     def view_all_entries
         address_book.entries.each do |entry|
             system "clear"
