@@ -82,6 +82,46 @@ RSpec.describe AddressBook do
             entry_five = book.entries[4]
             check_entry(entry_five, "Sussie", "555-555-2036", "sussie@blocmail.com")
         end
+#Import second CSV file
+        it "imports a second CSV file" do
+            book.import_from_csv("entries.csv")
+            book.import_from_csv("entries_2.csv")
+            book_size = book.entries.size
+
+            expect(book_size).to eq 8
+        end
+
+        it "imports the NEW 4th entry after alphabetizing all entries" do
+            book.import_from_csv("entries.csv")
+            book.import_from_csv("entries_2.csv")
+
+            entry_four = book.entries[3]
+            check_entry(entry_four, "Kaity", "555-555-1622", "kaityboo@bloc.com")
+        end
+
+        it "imports the NEW 5th entry after alphabetizing all entries" do
+            book.import_from_csv("entries.csv")
+            book.import_from_csv("entries_2.csv")
+
+            entry_five = book.entries[4]
+            check_entry(entry_five, "Sally", "555-555-4646", "sally@blocmail.com")
+        end
+
+        it "imports the 7th entry" do
+            book.import_from_csv("entries.csv")
+            book.import_from_csv("entries_2.csv")
+
+            entry_seven = book.entries[6]
+            check_entry(entry_seven, "Terry", "555-555-9461", "mommyconk@bloc.com")
+        end
+
+        it "imports the 8th entry" do
+            book.import_from_csv("entries.csv")
+            book.import_from_csv("entries_2.csv")
+
+            entry_eight = book.entries[7]
+            check_entry(entry_eight, "Tom", "555-555-3532", "conkytom@bloc.com")
+        end
     end
 
 end
