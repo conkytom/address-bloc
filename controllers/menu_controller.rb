@@ -13,6 +13,8 @@ class MenuController
         puts "2 - Create an entry"
         puts "3 - Search for an entry"
         puts "4 - Import entries from a CSV"
+#Obliterate all entries
+        puts "6 - Delete all entries (Obliterate!)"
         puts "5 - Exit"
         print "Enter your selection: "
 
@@ -38,6 +40,11 @@ class MenuController
             when 5
                 puts "Good-Bye!"
                 exit(0)
+#Obliterate all entries
+            when 6
+                system "clear"
+                obliterate
+                main_menu
             else
                 system "clear"
                 puts "Sorry, that is not a valid input"
@@ -177,5 +184,28 @@ class MenuController
             puts entry.to_s
             search_submenu(entry)
         end
+    end
+#Obliterate all entries
+    def obliterate
+        puts "Are you sure you want to delete all your contacts?"
+        puts "y - I don't want to contact anyone ever again, OBLITERATE THEM!"
+        puts "n - On second thought I'll hold on to them just in case"
+
+        selection = gets.chomp
+        case selection
+            when "y"
+                address_book.entries.clear
+                system "clear"
+                puts "Gone..... they're all gone"
+                main_menu
+            when "n"
+                system "clear"
+                puts "Disaster averted"
+                main_menu
+            else
+                system "clear"
+                puts "#{selection} is not a valid input"
+                obliterate
+            end
     end
 end
