@@ -133,5 +133,4 @@ RSpec.describe AddressBook do
             expect(entry).to be_nil
         end
     end
-
 end
